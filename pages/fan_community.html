@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fan Community - IPL Team Hub</title>
+    <link rel="stylesheet" href="../css/main.css" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fiplteamh6500back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background font-source-sans">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-subtle sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <svg class="h-10 w-10 text-primary" viewBox="0 0 40 40" fill="currentColor">
+                        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M12 20l6 6 10-12" stroke="currentColor" stroke-width="3" fill="none"/>
+                        <text x="20" y="32" text-anchor="middle" class="text-xs font-bold">IPL</text>
+                    </svg>
+                    <span class="ml-3 text-xl font-inter font-bold text-primary">Team Hub</span>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="team_dashboard.html" class="text-text-secondary hover:text-primary transition-smooth">Dashboard</a>
+                    <a href="player_profiles.html" class="text-text-secondary hover:text-primary transition-smooth">Players</a>
+                    <a href="match_center.html" class="text-text-secondary hover:text-primary transition-smooth">Matches</a>
+                    <a href="fan_community.html" class="text-primary font-semibold border-b-2 border-primary pb-1">Community</a>
+                </div>
+                
+                <!-- User Actions -->
+                <div class="flex items-center space-x-4">
+                    <a href="login.html" class="text-text-secondary hover:text-primary transition-smooth">Login</a>
+                    <a href="user_registration.html" class="bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-600 transition-smooth">Sign Up</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button class="text-text-secondary hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Community Hero Section -->
+    <section class="bg-gradient-to-r from-primary to-primary-700 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-inter font-bold mb-2">Fan Community</h1>
+                    <p class="text-lg opacity-90">Connect with fellow Mumbai Indians supporters</p>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 text-center">
+                    <div>
+                        <div class="text-2xl font-bold text-accent">2,847</div>
+                        <div class="text-sm opacity-80">Active Members</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-accent">156</div>
+                        <div class="text-sm opacity-80">Today's Posts</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-accent">42</div>
+                        <div class="text-sm opacity-80">Online Now</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Community Content -->
+    <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- Main Discussion Area -->
+                <div class="lg:col-span-3 space-y-6">
+                    <!-- Community Actions Bar -->
+                    <div class="bg-surface rounded-xl shadow-subtle p-4">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div class="flex items-center space-x-4">
+                                <button class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-smooth flex items-center">
+                                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                                    </svg>
+                                    New Thread
+                                </button>
+                                <button class="bg-secondary text-white px-6 py-2 rounded-lg hover:bg-secondary-600 transition-smooth flex items-center">
+                                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                    </svg>
+                                    Create Poll
+                                </button>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <select class="border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <option>All Categories</option>
+                                    <option>Match Discussions</option>
+                                    <option>Player Debates</option>
+                                    <option>Team News</option>
+                                    <option>General Cricket</option>
+                                </select>
+                                <button class="p-2 border border-border rounded-lg hover:bg-background transition-smooth">
+                                    <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category Tabs -->
+                    <div class="bg-surface rounded-xl shadow-subtle">
+                        <div class="border-b border-border-light">
+                            <nav class="flex space-x-8 px-6">
+                                <button class="py-4 px-2 border-b-2 border-primary text-primary font-semibold">All Discussions</button>
+                                <button class="py-4 px-2 border-b-2 border-transparent text-text-secondary hover:text-primary transition-smooth">Match Talk</button>
+                                <button class="py-4 px-2 border-b-2 border-transparent text-text-secondary hover:text-primary transition-smooth">Player Zone</button>
+                                <button class="py-4 px-2 border-b-2 border-transparent text-text-secondary hover:text-primary transition-smooth">Team News</button>
+                            </nav>
+                        </div>
+
+                        <!-- Discussion Threads -->
+                        <div class="divide-y divide-border-light">
+                            <!-- Thread 1 -->
+                            <div class="p-6 hover:bg-background transition-smooth cursor-pointer">
+                                <div class="flex items-start space-x-4">
+                                    <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3" alt="User Avatar" class="h-12 w-12 rounded-full object-cover" onerror="this.src='https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h3 class="text-lg font-semibold text-text-primary hover:text-primary transition-smooth">
+                                                Rohit Sharma's captaincy in the last match - Thoughts?
+                                            </h3>
+                                            <span class="bg-accent text-primary px-2 py-1 rounded-full text-xs font-semibold">Hot</span>
+                                        </div>
+                                        <div class="flex items-center space-x-4 text-sm text-text-secondary mb-3">
+                                            <span class="font-medium text-primary">@CricketFan2025</span>
+                                            <span>•</span>
+                                            <span>Match Discussions</span>
+                                            <span>•</span>
+                                            <span>2 hours ago</span>
+                                        </div>
+                                        <p class="text-text-secondary mb-4 line-clamp-2">
+                                            What did everyone think about Rohit's bowling changes in the death overs? I felt he could have brought Bumrah earlier...
+                                        </p>
+                                        <div class="flex items-center space-x-6">
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                                </svg>
+                                                <span class="text-sm font-medium">47 replies</span>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                                </svg>
+                                                <span class="text-sm font-medium">23 likes</span>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                                </svg>
+                                                <span class="text-sm font-medium">156 views</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Thread 2 -->
+                            <div class="p-6 hover:bg-background transition-smooth cursor-pointer">
+                                <div class="flex items-start space-x-4">
+                                    <img src="https://images.pixabay.com/photo/2016/11/29/06/15/cricket-1867616_1280.jpg" alt="User Avatar" class="h-12 w-12 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=2940&auto=format&fit=crop'; this.onerror=null;" />
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h3 class="text-lg font-semibold text-text-primary hover:text-primary transition-smooth">
+                                                Predictions for next match vs CSK
+                                            </h3>
+                                            <span class="bg-primary-100 text-primary px-2 py-1 rounded-full text-xs font-semibold">Pinned</span>
+                                        </div>
+                                        <div class="flex items-center space-x-4 text-sm text-text-secondary mb-3">
+                                            <span class="font-medium text-primary">@MISupporter</span>
+                                            <span>•</span>
+                                            <span>Match Discussions</span>
+                                            <span>•</span>
+                                            <span>5 hours ago</span>
+                                        </div>
+                                        <p class="text-text-secondary mb-4 line-clamp-2">
+                                            CSK is looking strong this season. What's our strategy? Share your playing XI predictions and key matchups to watch...
+                                        </p>
+                                        <div class="flex items-center space-x-6">
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                                </svg>
+                                                <span class="text-sm font-medium">89 replies</span>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                                </svg>
+                                                <span class="text-sm font-medium">67 likes</span>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                                </svg>
+                                                <span class="text-sm font-medium">234 views</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Thread 3 -->
+                            <div class="p-6 hover:bg-background transition-smooth cursor-pointer">
+                                <div class="flex items-start space-x-4">
+                                    <img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="User Avatar" class="h-12 w-12 rounded-full object-cover" onerror="this.src='https://images.pixabay.com/photo/2016/11/29/06/15/cricket-1867616_1280.jpg'; this.onerror=null;" />
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h3 class="text-lg font-semibold text-text-primary hover:text-primary transition-smooth">
+                                                Hardik Pandya's return - Impact on team balance
+                                            </h3>
+                                        </div>
+                                        <div class="flex items-center space-x-4 text-sm text-text-secondary mb-3">
+                                            <span class="font-medium text-primary">@BlueArmy</span>
+                                            <span>•</span>
+                                            <span>Player Zone</span>
+                                            <span>•</span>
+                                            <span>1 day ago</span>
+                                        </div>
+                                        <p class="text-text-secondary mb-4 line-clamp-2">
+                                            With Hardik back in form, how do you think it affects our team composition? His all-round abilities are crucial for balance...
+                                        </p>
+                                        <div class="flex items-center space-x-6">
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                                </svg>
+                                                <span class="text-sm font-medium">32 replies</span>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                                </svg>
+                                                <span class="text-sm font-medium">18 likes</span>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                                </svg>
+                                                <span class="text-sm font-medium">98 views</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Thread 4 -->
+                            <div class="p-6 hover:bg-background transition-smooth cursor-pointer">
+                                <div class="flex items-start space-x-4">
+                                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3" alt="User Avatar" class="h-12 w-12 rounded-full object-cover" onerror="this.src='https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h3 class="text-lg font-semibold text-text-primary hover:text-primary transition-smooth">
+                                                New training facility photos - Looks amazing!
+                                            </h3>
+                                        </div>
+                                        <div class="flex items-center space-x-4 text-sm text-text-secondary mb-3">
+                                            <span class="font-medium text-primary">@MumbaiIndians_Official</span>
+                                            <span class="bg-accent text-primary px-2 py-1 rounded-full text-xs font-semibold">Official</span>
+                                            <span>•</span>
+                                            <span>Team News</span>
+                                            <span>•</span>
+                                            <span>2 days ago</span>
+                                        </div>
+                                        <p class="text-text-secondary mb-4 line-clamp-2">
+                                            Check out the state-of-the-art facilities at our new training center. World-class equipment and infrastructure for our champions...
+                                        </p>
+                                        <div class="flex items-center space-x-6">
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                                </svg>
+                                                <span class="text-sm font-medium">76 replies</span>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                                </svg>
+                                                <span class="text-sm font-medium">142 likes</span>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                                </svg>
+                                                <span class="text-sm font-medium">312 views</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Load More Button -->
+                        <div class="p-6 text-center border-t border-border-light">
+                            <button class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary-700 transition-smooth">
+                                Load More Discussions
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="space-y-6">
+                    <!-- Active Poll -->
+                    <div class="bg-surface rounded-xl shadow-subtle p-6">
+                        <h3 class="text-xl font-inter font-bold text-text-primary mb-4">Active Poll</h3>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-text-primary mb-3">Who should open with Rohit in the next match?</h4>
+                            <div class="space-y-3">
+                                <label class="flex items-center justify-between cursor-pointer p-2 rounded-lg hover:bg-background transition-smooth">
+                                    <div class="flex items-center">
+                                        <input type="radio" name="poll" class="text-primary focus:ring-primary mr-3" />
+                                        <span>Ishan Kishan</span>
+                                    </div>
+                                    <span class="text-sm text-text-secondary">45%</span>
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer p-2 rounded-lg hover:bg-background transition-smooth">
+                                    <div class="flex items-center">
+                                        <input type="radio" name="poll" class="text-primary focus:ring-primary mr-3" />
+                                        <span>Suryakumar Yadav</span>
+                                    </div>
+                                    <span class="text-sm text-text-secondary">32%</span>
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer p-2 rounded-lg hover:bg-background transition-smooth">
+                                    <div class="flex items-center">
+                                        <input type="radio" name="poll" class="text-primary focus:ring-primary mr-3" />
+                                        <span>Cameron Green</span>
+                                    </div>
+                                    <span class="text-sm text-text-secondary">23%</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="w-full bg-primary text-white py-2 rounded-lg hover:bg-primary-700 transition-smooth">
+                            Vote Now
+                        </button>
+                        <p class="text-xs text-text-secondary mt-2 text-center">1,234 votes • Ends in 2 days</p>
+                    </div>
+
+                    <!-- Trending Topics -->
+                    <div class="bg-surface rounded-xl shadow-subtle p-6">
+                        <h3 class="text-xl font-inter font-bold text-text-primary mb-4">Trending Topics</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-2 rounded-lg hover:bg-background transition-smooth cursor-pointer">
+                                <span class="text-sm font-medium">#RohitSharma</span>
+                                <span class="text-xs text-text-secondary">156 posts</span>
+                            </div>
+                            <div class="flex items-center justify-between p-2 rounded-lg hover:bg-background transition-smooth cursor-pointer">
+                                <span class="text-sm font-medium">#MIvsCSK</span>
+                                <span class="text-xs text-text-secondary">89 posts</span>
+                            </div>
+                            <div class="flex items-center justify-between p-2 rounded-lg hover:bg-background transition-smooth cursor-pointer">
+                                <span class="text-sm font-medium">#BumrahMagic</span>
+                                <span class="text-xs text-text-secondary">67 posts</span>
+                            </div>
+                            <div class="flex items-center justify-between p-2 rounded-lg hover:bg-background transition-smooth cursor-pointer">
+                                <span class="text-sm font-medium">#TrainingFacility</span>
+                                <span class="text-xs text-text-secondary">45 posts</span>
+                            </div>
+                            <div class="flex items-center justify-between p-2 rounded-lg hover:bg-background transition-smooth cursor-pointer">
+                                <span class="text-sm font-medium">#PlayoffRace</span>
+                                <span class="text-xs text-text-secondary">32 posts</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Community Highlights -->
+                    <div class="bg-surface rounded-xl shadow-subtle p-6">
+                        <h3 class="text-xl font-inter font-bold text-text-primary mb-4">Community Highlights</h3>
+                        <div class="space-y-4">
+                            <!-- Fan Photo -->
+                            <div class="border border-border rounded-lg p-3">
+                                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Fan Photo" class="w-full h-32 object-cover rounded-lg mb-3" onerror="this.src='https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <img src="https://images.pixabay.com/photo/2016/11/29/06/15/cricket-1867616_1280.jpg" alt="User" class="h-6 w-6 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=2940&auto=format&fit=crop'; this.onerror=null;" />
+                                    <span class="text-sm font-medium">@FanClub_Mumbai</span>
+                                </div>
+                                <p class="text-sm text-text-secondary">Amazing atmosphere at Wankhede! 💙</p>
+                                <div class="flex items-center space-x-4 mt-2 text-xs text-text-secondary">
+                                    <span>❤️ 45</span>
+                                    <span>💬 12</span>
+                                    <span>📤 8</span>
+                                </div>
+                            </div>
+
+                            <!-- Fan Testimonial -->
+                            <div class="border border-border rounded-lg p-3">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3" alt="User" class="h-6 w-6 rounded-full object-cover" onerror="this.src='https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                                    <span class="text-sm font-medium">@LifelongFan</span>
+                                </div>
+                                <p class="text-sm text-text-secondary">"Been supporting MI for 15 years. This community makes every match special! 🏆"</p>
+                                <div class="flex items-center space-x-4 mt-2 text-xs text-text-secondary">
+                                    <span>❤️ 23</span>
+                                    <span>💬 5</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full mt-4 text-center bg-secondary text-white py-2 rounded-lg hover:bg-secondary-600 transition-smooth">
+                            Share Your Story
+                        </button>
+                    </div>
+
+                    <!-- Top Contributors -->
+                    <div class="bg-surface rounded-xl shadow-subtle p-6">
+                        <h3 class="text-xl font-inter font-bold text-text-primary mb-4">Top Contributors</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Top Contributor" class="h-10 w-10 rounded-full object-cover" onerror="this.src='https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="font-medium text-sm">@CricketAnalyst</span>
+                                        <span class="bg-accent text-primary px-2 py-1 rounded-full text-xs font-semibold">MVP</span>
+                                    </div>
+                                    <p class="text-xs text-text-secondary">234 helpful posts</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-3">
+                                <img src="https://images.pixabay.com/photo/2016/11/29/06/15/cricket-1867616_1280.jpg" alt="Top Contributor" class="h-10 w-10 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=2940&auto=format&fit=crop'; this.onerror=null;" />
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="font-medium text-sm">@MIStats</span>
+                                        <span class="bg-primary-100 text-primary px-2 py-1 rounded-full text-xs font-semibold">Expert</span>
+                                    </div>
+                                    <p class="text-xs text-text-secondary">189 helpful posts</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-3">
+                                <img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Top Contributor" class="h-10 w-10 rounded-full object-cover" onerror="this.src='https://images.pixabay.com/photo/2016/11/29/06/15/cricket-1867616_1280.jpg'; this.onerror=null;" />
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="font-medium text-sm">@BlueArmy</span>
+                                        <span class="bg-secondary-100 text-secondary px-2 py-1 rounded-full text-xs font-semibold">Active</span>
+                                    </div>
+                                    <p class="text-xs text-text-secondary">156 helpful posts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Community Guidelines -->
+                    <div class="bg-gradient-to-br from-primary to-primary-700 text-white rounded-xl p-6">
+                        <h3 class="text-lg font-inter font-bold mb-3">Community Guidelines</h3>
+                        <ul class="text-sm space-y-2 opacity-90">
+                            <li>• Be respectful to all members</li>
+                            <li>• Stay on topic and cricket-focused</li>
+                            <li>• No spam or promotional content</li>
+                            <li>• Share authentic content only</li>
+                        </ul>
+                        <button class="w-full mt-4 bg-accent text-primary py-2 rounded-lg font-semibold hover:bg-accent-400 transition-smooth">
+                            Read Full Guidelines
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-accent" viewBox="0 0 40 40" fill="currentColor">
+                            <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M12 20l6 6 10-12" stroke="currentColor" stroke-width="3" fill="none"/>
+                        </svg>
+                        <span class="ml-2 text-lg font-inter font-bold">IPL Team Hub</span>
+                    </div>
+                    <p class="text-sm opacity-80">Your ultimate destination for IPL team updates and fan engagement.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="team_dashboard.html" class="opacity-80 hover:opacity-100">Dashboard</a></li>
+                        <li><a href="player_profiles.html" class="opacity-80 hover:opacity-100">Players</a></li>
+                        <li><a href="match_center.html" class="opacity-80 hover:opacity-100">Matches</a></li>
+                        <li><a href="fan_community.html" class="opacity-80 hover:opacity-100">Community</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="javascript:void(0)" class="opacity-80 hover:opacity-100">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="opacity-80 hover:opacity-100">Contact Us</a></li>
+                        <li><a href="javascript:void(0)" class="opacity-80 hover:opacity-100">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" class="opacity-80 hover:opacity-100">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="javascript:void(0)" class="opacity-80 hover:opacity-100">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="opacity-80 hover:opacity-100">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="opacity-80 hover:opacity-100">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-primary-600 mt-8 pt-8 text-center text-sm opacity-80">
+                <p>© 2025 IPL Team Hub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Real-time community activity simulation
+        function updateCommunityStats() {
+            const activeMembers = document.querySelector('.text-2xl.font-bold.text-accent');
+            if (activeMembers && activeMembers.textContent === '2,847') {
+                const currentCount = parseInt(activeMembers.textContent.replace(',', ''));
+                const variation = Math.floor(Math.random() * 10) - 5;
+                const newCount = Math.max(2800, currentCount + variation);
+                activeMembers.textContent = newCount.toLocaleString();
+            }
+        }
+
+        // Update community stats every 10 seconds
+        setInterval(updateCommunityStats, 10000);
+
+        // Thread interaction handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers for thread interactions
+            const threads = document.querySelectorAll('[class*="hover:bg-background"]');
+            threads.forEach(thread => {
+                thread.addEventListener('click', function(e) {
+                    if (!e.target.closest('button') && !e.target.closest('input')) {
+                        // Simulate thread opening
+                        console.log('Opening thread discussion...');
+                    }
+                });
+            });
+
+            // Poll voting functionality
+            const pollOptions = document.querySelectorAll('input[name="poll"]');
+            pollOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    // Update poll percentages (simulation)
+                    console.log('Poll vote registered');
+                });
+            });
+
+            // Category tab switching
+            const categoryTabs = document.querySelectorAll('nav button');
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active state from all tabs
+                    categoryTabs.forEach(t => {
+                        t.classList.remove('border-primary', 'text-primary');
+                        t.classList.add('border-transparent', 'text-text-secondary');
+                    });
+                    
+                    // Add active state to clicked tab
+                    this.classList.remove('border-transparent', 'text-text-secondary');
+                    this.classList.add('border-primary', 'text-primary');
+                    
+                    // Filter threads based on category (simulation)
+                    console.log('Filtering threads for category:', this.textContent);
+                });
+            });
+        });
+
+        // Trending topics animation
+        function animateTrendingTopics() {
+            const trendingItems = document.querySelectorAll('[class*="hover:bg-background"]');
+            trendingItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        item.style.transform = 'scale(1)';
+                    }, 200);
+                }, index * 100);
+            });
+        }
+
+        // Animate trending topics every 30 seconds
+        setInterval(animateTrendingTopics, 30000);
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Registration - IPL Team Hub</title>
+    <link rel="stylesheet" href="../css/main.css" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fiplteamh6500back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background font-source-sans">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-subtle sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <svg class="h-10 w-10 text-primary" viewBox="0 0 40 40" fill="currentColor">
+                        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M12 20l6 6 10-12" stroke="currentColor" stroke-width="3" fill="none"/>
+                        <text x="20" y="32" text-anchor="middle" class="text-xs font-bold">IPL</text>
+                    </svg>
+                    <span class="ml-3 text-xl font-inter font-bold text-primary">Team Hub</span>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="team_dashboard.html" class="text-text-secondary hover:text-primary transition-smooth">Dashboard</a>
+                    <a href="player_profiles.html" class="text-text-secondary hover:text-primary transition-smooth">Players</a>
+                    <a href="match_center.html" class="text-text-secondary hover:text-primary transition-smooth">Matches</a>
+                    <a href="fan_community.html" class="text-text-secondary hover:text-primary transition-smooth">Community</a>
+                </div>
+                
+                <!-- User Actions -->
+                <div class="flex items-center space-x-4">
+                    <a href="login.html" class="text-text-secondary hover:text-primary transition-smooth">Login</a>
+                    <a href="user_registration.html" class="bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-600 transition-smooth">Sign Up</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button class="text-text-secondary hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Hero Section -->
+    <section class="bg-gradient-to-r from-primary to-primary-700 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl font-inter font-bold mb-4">Join the IPL Team Hub</h1>
+            <p class="text-xl opacity-90 max-w-2xl mx-auto">Create your account to access exclusive content, connect with fellow fans, and never miss a moment of IPL action</p>
+        </div>
+    </section>
+
+    <!-- Registration Form Section -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-surface rounded-xl shadow-medium overflow-hidden">
+                <!-- Progress Indicator -->
+                <div class="bg-primary-50 px-6 py-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-semibold">1</div>
+                                <span class="ml-2 text-sm font-medium text-primary">Personal Info</span>
+                            </div>
+                            <div class="w-16 h-1 bg-border rounded"></div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-border text-text-secondary rounded-full flex items-center justify-center text-sm font-semibold">2</div>
+                                <span class="ml-2 text-sm font-medium text-text-secondary">Team Preferences</span>
+                            </div>
+                            <div class="w-16 h-1 bg-border rounded"></div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-border text-text-secondary rounded-full flex items-center justify-center text-sm font-semibold">3</div>
+                                <span class="ml-2 text-sm font-medium text-text-secondary">Verification</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Content -->
+                <div class="p-8">
+                    <form id="registrationForm" class="space-y-8">
+                        <!-- Step 1: Personal Information -->
+                        <div id="step1" class="space-y-6">
+                            <div class="text-center mb-8">
+                                <h2 class="text-2xl font-inter font-bold text-text-primary mb-2">Personal Information</h2>
+                                <p class="text-text-secondary">Let's start with the basics</p>
+                            </div>
+
+                            <!-- Social Registration Options -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                                <button type="button" class="flex items-center justify-center px-4 py-3 border border-border rounded-lg hover:bg-background transition-smooth">
+                                    <svg class="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                                    </svg>
+                                    Continue with Google
+                                </button>
+                                <button type="button" class="flex items-center justify-center px-4 py-3 border border-border rounded-lg hover:bg-background transition-smooth">
+                                    <svg class="w-5 h-5 mr-3 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                    Continue with Facebook
+                                </button>
+                            </div>
+
+                            <div class="relative">
+                                <div class="absolute inset-0 flex items-center">
+                                    <div class="w-full border-t border-border"></div>
+                                </div>
+                                <div class="relative flex justify-center text-sm">
+                                    <span class="px-2 bg-surface text-text-secondary">Or register with email</span>
+                                </div>
+                            </div>
+
+                            <!-- Personal Details Form -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium text-text-primary mb-2">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth" placeholder="Enter your first name" />
+                                    <div class="text-sm text-error mt-1 hidden" id="firstNameError">Please enter your first name</div>
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium text-text-primary mb-2">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth" placeholder="Enter your last name" />
+                                    <div class="text-sm text-error mt-1 hidden" id="lastNameError">Please enter your last name</div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-text-primary mb-2">Email Address *</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth" placeholder="Enter your email address" />
+                                <div class="text-sm text-error mt-1 hidden" id="emailError">Please enter a valid email address</div>
+                            </div>
+
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-text-primary mb-2">Phone Number</label>
+                                <div class="flex">
+                                    <select class="px-3 py-3 border border-border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background">
+                                        <option value="+91">+91</option>
+                                        <option value="+1">+1</option>
+                                        <option value="+44">+44</option>
+                                    </select>
+                                    <input type="tel" id="phone" name="phone" class="flex-1 px-4 py-3 border border-l-0 border-border rounded-r-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth" placeholder="Enter your phone number" />
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="password" class="block text-sm font-medium text-text-primary mb-2">Password *</label>
+                                    <div class="relative">
+                                        <input type="password" id="password" name="password" required class="w-full px-4 py-3 pr-12 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth" placeholder="Create a strong password" />
+                                        <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center" onclick="togglePassword('password')">
+                                            <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <!-- Password Strength Indicator -->
+                                    <div class="mt-2">
+                                        <div class="flex space-x-1">
+                                            <div class="h-1 flex-1 bg-border rounded" id="strength1"></div>
+                                            <div class="h-1 flex-1 bg-border rounded" id="strength2"></div>
+                                            <div class="h-1 flex-1 bg-border rounded" id="strength3"></div>
+                                            <div class="h-1 flex-1 bg-border rounded" id="strength4"></div>
+                                        </div>
+                                        <p class="text-xs text-text-secondary mt-1" id="strengthText">Password strength</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="confirmPassword" class="block text-sm font-medium text-text-primary mb-2">Confirm Password *</label>
+                                    <div class="relative">
+                                        <input type="password" id="confirmPassword" name="confirmPassword" required class="w-full px-4 py-3 pr-12 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth" placeholder="Confirm your password" />
+                                        <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center" onclick="togglePassword('confirmPassword')">
+                                            <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="text-sm text-error mt-1 hidden" id="confirmPasswordError">Passwords do not match</div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="dateOfBirth" class="block text-sm font-medium text-text-primary mb-2">Date of Birth</label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth" />
+                            </div>
+
+                            <div class="flex justify-end">
+                                <button type="button" onclick="nextStep(2)" class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary-700 transition-smooth font-semibold">
+                                    Next Step
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Team Preferences -->
+                        <div id="step2" class="space-y-6 hidden">
+                            <div class="text-center mb-8">
+                                <h2 class="text-2xl font-inter font-bold text-text-primary mb-2">Team Preferences</h2>
+                                <p class="text-text-secondary">Choose your favorite team and players</p>
+                            </div>
+
+                            <!-- Favorite Team Selection -->
+                            <div>
+                                <label class="block text-sm font-medium text-text-primary mb-4">Favorite IPL Team *</label>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="favoriteTeam" value="MI" class="sr-only" />
+                                        <div class="team-card border-2 border-border rounded-lg p-4 text-center hover:border-primary transition-smooth">
+                                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Mumbai Indians" class="h-16 w-16 mx-auto rounded-full object-cover mb-2" onerror="this.src='https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                                            <h3 class="font-semibold text-sm">Mumbai Indians</h3>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="favoriteTeam" value="CSK" class="sr-only" />
+                                        <div class="team-card border-2 border-border rounded-lg p-4 text-center hover:border-primary transition-smooth">
+                                            <img src="https://images.pixabay.com/photo/2017/11/23/15/49/cricket-2972423_1280.jpg" alt="Chennai Super Kings" class="h-16 w-16 mx-auto rounded-full object-cover mb-2" onerror="this.src='https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2940&auto=format&fit=crop'; this.onerror=null;" />
+                                            <h3 class="font-semibold text-sm">Chennai Super Kings</h3>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="favoriteTeam" value="RCB" class="sr-only" />
+                                        <div class="team-card border-2 border-border rounded-lg p-4 text-center hover:border-primary transition-smooth">
+                                            <img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Royal Challengers Bangalore" class="h-16 w-16 mx-auto rounded-full object-cover mb-2" onerror="this.src='https://images.pixabay.com/photo/2017/11/23/15/49/cricket-2972423_1280.jpg'; this.onerror=null;" />
+                                            <h3 class="font-semibold text-sm">Royal Challengers Bangalore</h3>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="favoriteTeam" value="KKR" class="sr-only" />
+                                        <div class="team-card border-2 border-border rounded-lg p-4 text-center hover:border-primary transition-smooth">
+                                            <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Kolkata Knight Riders" class="h-16 w-16 mx-auto rounded-full object-cover mb-2" onerror="this.src='https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                                            <h3 class="font-semibold text-sm">Kolkata Knight Riders</h3>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Favorite Players -->
+                            <div>
+                                <label class="block text-sm font-medium text-text-primary mb-4">Favorite Players (Select up to 3)</label>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <label class="cursor-pointer">
+                                        <input type="checkbox" name="favoritePlayers" value="rohit-sharma" class="sr-only" />
+                                        <div class="player-card border-2 border-border rounded-lg p-4 hover:border-primary transition-smooth">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Rohit Sharma" class="h-12 w-12 rounded-full object-cover" onerror="this.src='https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                                                <div>
+                                                    <h3 class="font-semibold text-sm">Rohit Sharma</h3>
+                                                    <p class="text-xs text-text-secondary">Mumbai Indians</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="checkbox" name="favoritePlayers" value="virat-kohli" class="sr-only" />
+                                        <div class="player-card border-2 border-border rounded-lg p-4 hover:border-primary transition-smooth">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://images.pixabay.com/photo/2016/11/29/06/15/cricket-1867616_1280.jpg" alt="Virat Kohli" class="h-12 w-12 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=2940&auto=format&fit=crop'; this.onerror=null;" />
+                                                <div>
+                                                    <h3 class="font-semibold text-sm">Virat Kohli</h3>
+                                                    <p class="text-xs text-text-secondary">Royal Challengers Bangalore</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="checkbox" name="favoritePlayers" value="ms-dhoni" class="sr-only" />
+                                        <div class="player-card border-2 border-border rounded-lg p-4 hover:border-primary transition-smooth">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="MS Dhoni" class="h-12 w-12 rounded-full object-cover" onerror="this.src='https://images.pixabay.com/photo/2016/11/29/06/15/cricket-1867616_1280.jpg'; this.onerror=null;" />
+                                                <div>
+                                                    <h3 class="font-semibold text-sm">MS Dhoni</h3>
+                                                    <p class="text-xs text-text-secondary">Chennai Super Kings</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Notification Preferences -->
+                            <div>
+                                <label class="block text-sm font-medium text-text-primary mb-4">Notification Preferences</label>
+                                <div class="space-y-3">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" name="notifications" value="match-updates" checked class="rounded border-border text-primary focus:ring-primary" />
+                                        <span class="ml-3 text-sm">Match updates and live scores</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" name="notifications" value="team-news" checked class="rounded border-border text-primary focus:ring-primary" />
+                                        <span class="ml-3 text-sm">Team news and announcements</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" name="notifications" value="player-updates" class="rounded border-border text-primary focus:ring-primary" />
+                                        <span class="ml-3 text-sm">Player performance updates</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" name="notifications" value="community" class="rounded border-border text-primary focus:ring-primary" />
+                                        <span class="ml-3 text-sm">Community discussions and polls</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Fan Club Membership -->
+                            <div class="bg-primary-50 rounded-lg p-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0">
+                                        <svg class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="text-lg font-semibold text-primary mb-2">Join Fan Club Membership</h3>
+                                        <p class="text-sm text-text-secondary mb-4">Get exclusive access to premium content, early ticket booking, and special events</p>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="fanClubMembership" value="yes" class="rounded border-border text-primary focus:ring-primary" />
+                                            <span class="ml-3 text-sm font-medium">Yes, I want to join the fan club (₹999/year)</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between">
+                                <button type="button" onclick="previousStep(1)" class="bg-background text-text-primary px-8 py-3 rounded-lg border border-border hover:bg-primary-50 transition-smooth font-semibold">
+                                    Previous
+                                </button>
+                                <button type="button" onclick="nextStep(3)" class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary-700 transition-smooth font-semibold">
+                                    Next Step
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Verification & Terms -->
+                        <div id="step3" class="space-y-6 hidden">
+                            <div class="text-center mb-8">
+                                <h2 class="text-2xl font-inter font-bold text-text-primary mb-2">Almost Done!</h2>
+                                <p class="text-text-secondary">Review your information and complete registration</p>
+                            </div>
+
+                            <!-- Profile Photo Upload -->
+                            <div>
+                                <label class="block text-sm font-medium text-text-primary mb-4">Profile Photo (Optional)</label>
+                                <div class="flex items-center space-x-6">
+                                    <div class="flex-shrink-0">
+                                        <img id="profilePreview" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Profile Preview" class="h-20 w-20 rounded-full object-cover border-4 border-border" onerror="this.src='https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                                    </div>
+                                    <div>
+                                        <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*" class="hidden" onchange="previewImage(this)" />
+                                        <label for="profilePhoto" class="cursor-pointer bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-smooth inline-block">
+                                            Upload Photo
+                                        </label>
+                                        <p class="text-xs text-text-secondary mt-2">JPG, PNG or GIF (max. 5MB)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Newsletter Subscription -->
+                            <div class="bg-accent-50 rounded-lg p-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0">
+                                        <svg class="h-8 w-8 text-accent-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="text-lg font-semibold text-accent-800 mb-2">Stay Updated</h3>
+                                        <p class="text-sm text-text-secondary mb-4">Subscribe to our newsletter for the latest IPL news, match schedules, and exclusive content</p>
+                                        <label class="flex items-center">
+                                            <input type="checkbox" name="newsletter" value="yes" checked class="rounded border-border text-primary focus:ring-primary" />
+                                            <span class="ml-3 text-sm font-medium">Yes, send me the newsletter</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Terms and Conditions -->
+                            <div class="space-y-4">
+                                <label class="flex items-start">
+                                    <input type="checkbox" name="terms" value="accepted" required class="rounded border-border text-primary focus:ring-primary mt-1" />
+                                    <span class="ml-3 text-sm">
+                                        I agree to the <a href="javascript:void(0)" class="text-primary hover:underline">Terms of Service</a> 
+                                        and <a href="javascript:void(0)" class="text-primary hover:underline">Privacy Policy</a>
+                                    </span>
+                                </label>
+                                <label class="flex items-start">
+                                    <input type="checkbox" name="age" value="confirmed" required class="rounded border-border text-primary focus:ring-primary mt-1" />
+                                    <span class="ml-3 text-sm">I confirm that I am at least 13 years old</span>
+                                </label>
+                                <label class="flex items-start">
+                                    <input type="checkbox" name="marketing" value="accepted" class="rounded border-border text-primary focus:ring-primary mt-1" />
+                                    <span class="ml-3 text-sm">I agree to receive marketing communications and promotional offers</span>
+                                </label>
+                            </div>
+
+                            <div class="flex justify-between">
+                                <button type="button" onclick="previousStep(2)" class="bg-background text-text-primary px-8 py-3 rounded-lg border border-border hover:bg-primary-50 transition-smooth font-semibold">
+                                    Previous
+                                </button>
+                                <button type="submit" id="submitBtn" class="bg-secondary text-white px-8 py-3 rounded-lg hover:bg-secondary-600 transition-smooth font-semibold">
+                                    Create Account
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Login Link -->
+            <div class="text-center mt-8">
+                <p class="text-text-secondary">
+                    Already have an account? 
+                    <a href="login.html" class="text-primary hover:underline font-semibold">Sign in here</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-accent" viewBox="0 0 40 40" fill="currentColor">
+                            <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M12 20l6 6 10-12" stroke="currentColor" stroke-width="3" fill="none"/>
+                        </svg>
+                        <span class="ml-2 text-lg font-inter font-bold">IPL Team Hub</span>
+                    </div>
+                    <p class="text-sm opacity-80">Your ultimate destination for IPL team updates and fan engagement.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="team_dashboard.html" class="opacity-80 hover:opacity-100">Dashboard</a></li>
+                        <li><a href="player_profiles.html" class="opacity-80 hover:opacity-100">Players</a></li>
+                        <li><a href="match_center.html" class="opacity-80 hover:opacity-100">Matches</a></li>
+                        <li><a href="fan_community.html" class="opacity-80 hover:opacity-100">Community</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="javascript:void(0)" class="opacity-80 hover:opacity-100">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="opacity-80 hover:opacity-100">Contact Us</a></li>
+                        <li><a href="javascript:void(0)" class="opacity-80 hover:opacity-100">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" class="opacity-80 hover:opacity-100">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="javascript:void(0)" class="opacity-80 hover:opacity-100">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="opacity-80 hover:opacity-100">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="opacity-80 hover:opacity-100">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-primary-600 mt-8 pt-8 text-center text-sm opacity-80">
+                <p>© 2025 IPL Team Hub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+
+        // Step Navigation
+        function nextStep(step) {
+            if (validateCurrentStep()) {
+                document.getElementById(`step${currentStep}`).classList.add('hidden');
+                document.getElementById(`step${step}`).classList.remove('hidden');
+                updateProgressIndicator(step);
+                currentStep = step;
+            }
+        }
+
+        function previousStep(step) {
+            document.getElementById(`step${currentStep}`).classList.add('hidden');
+            document.getElementById(`step${step}`).classList.remove('hidden');
+            updateProgressIndicator(step);
+            currentStep = step;
+        }
+
+        function updateProgressIndicator(step) {
+            // Reset all steps
+            for (let i = 1; i <= 3; i++) {
+                const stepElement = document.querySelector(`.flex:nth-child(${i * 2 - 1}) .w-8`);
+                const stepText = document.querySelector(`.flex:nth-child(${i * 2 - 1}) span`);
+                const connector = document.querySelector(`.flex:nth-child(${i * 2})`);
+                
+                if (stepElement && stepText) {
+                    if (i <= step) {
+                        stepElement.className = 'w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-semibold';
+                        stepText.className = 'ml-2 text-sm font-medium text-primary';
+                    } else {
+                        stepElement.className = 'w-8 h-8 bg-border text-text-secondary rounded-full flex items-center justify-center text-sm font-semibold';
+                        stepText.className = 'ml-2 text-sm font-medium text-text-secondary';
+                    }
+                }
+                
+                if (connector && i < 3) {
+                    const line = connector.querySelector('.w-16');
+                    if (line) {
+                        line.className = i < step ? 'w-16 h-1 bg-primary rounded' : 'w-16 h-1 bg-border rounded';
+                    }
+                }
+            }
+        }
+
+        // Form Validation
+        function validateCurrentStep() {
+            if (currentStep === 1) {
+                return validateStep1();
+            } else if (currentStep === 2) {
+                return validateStep2();
+            }
+            return true;
+        }
+
+        function validateStep1() {
+            let isValid = true;
+            
+            // Validate required fields
+            const requiredFields = ['firstName', 'lastName', 'email', 'password', 'confirmPassword'];
+            requiredFields.forEach(field => {
+                const input = document.getElementById(field);
+                const error = document.getElementById(field + 'Error');
+                
+                if (!input.value.trim()) {
+                    if (error) error.classList.remove('hidden');
+                    input.classList.add('border-error');
+                    isValid = false;
+                } else {
+                    if (error) error.classList.add('hidden');
+                    input.classList.remove('border-error');
+                }
+            });
+
+            // Validate email format
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (email.value && !emailRegex.test(email.value)) {
+                emailError.textContent = 'Please enter a valid email address';
+                emailError.classList.remove('hidden');
+                email.classList.add('border-error');
+                isValid = false;
+            }
+
+            // Validate password match
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+            
+            if (password.value !== confirmPassword.value) {
+                confirmPasswordError.classList.remove('hidden');
+                confirmPassword.classList.add('border-error');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function validateStep2() {
+            const favoriteTeam = document.querySelector('input[name="favoriteTeam"]:checked');
+            if (!favoriteTeam) {
+                alert('Please select your favorite team');
+                return false;
+            }
+            return true;
+        }
+
+        // Password Strength Indicator
+        document.getElementById('password').addEventListener('input', function(e) {
+            const password = e.target.value;
+            const strength = calculatePasswordStrength(password);
+            updatePasswordStrength(strength);
+        });
+
+        function calculatePasswordStrength(password) {
+            let strength = 0;
+            if (password.length >= 8) strength++;
+            if (/[a-z]/.test(password)) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+            return Math.min(strength, 4);
+        }
+
+        function updatePasswordStrength(strength) {
+            const indicators = ['strength1', 'strength2', 'strength3', 'strength4'];
+            const colors = ['bg-error', 'bg-warning', 'bg-accent', 'bg-success'];
+            const texts = ['Very Weak', 'Weak', 'Fair', 'Strong'];
+            
+            indicators.forEach((id, index) => {
+                const element = document.getElementById(id);
+                element.className = index < strength ? `h-1 flex-1 rounded ${colors[Math.min(strength - 1, 3)]}` : 'h-1 flex-1 bg-border rounded';
+            });
+            
+            document.getElementById('strengthText').textContent = strength > 0 ? texts[Math.min(strength - 1, 3)] : 'Password strength';
+        }
+
+        // Password Toggle
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const type = field.getAttribute('type') === 'password' ? 'text' : 'password';
+            field.setAttribute('type', type);
+        }
+
+        // Team Selection
+        document.querySelectorAll('input[name="favoriteTeam"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.querySelectorAll('.team-card').forEach(card => {
+                    card.classList.remove('border-primary', 'bg-primary-50');
+                    card.classList.add('border-border');
+                });
+                
+                if (this.checked) {
+                    const card = this.nextElementSibling;
+                    card.classList.remove('border-border');
+                    card.classList.add('border-primary', 'bg-primary-50');
+                }
+            });
+        });
+
+        // Player Selection (max 3)
+        document.querySelectorAll('input[name="favoritePlayers"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const checkedBoxes = document.querySelectorAll('input[name="favoritePlayers"]:checked');
+                
+                if (checkedBoxes.length > 3) {
+                    this.checked = false;
+                    alert('You can select maximum 3 favorite players');
+                    return;
+                }
+                
+                const card = this.nextElementSibling;
+                if (this.checked) {
+                    card.classList.add('border-primary', 'bg-primary-50');
+                    card.classList.remove('border-border');
+                } else {
+                    card.classList.remove('border-primary', 'bg-primary-50');
+                    card.classList.add('border-border');
+                }
+            });
+        });
+
+        // Profile Photo Preview
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profilePreview').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Form Submission
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate terms acceptance
+            const terms = document.querySelector('input[name="terms"]:checked');
+            const age = document.querySelector('input[name="age"]:checked');
+            
+            if (!terms || !age) {
+                alert('Please accept the terms and conditions and confirm your age');
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Creating Account...';
+            submitBtn.disabled = true;
+            
+            // Simulate account creation
+            setTimeout(() => {
+                alert('Account created successfully! Please check your email for verification.');
+                // Redirect to login or dashboard
+                window.location.href = 'login.html';
+            }, 2000);
+        });
+
+        // Real-time validation
+        document.querySelectorAll('input[required]').forEach(input => {
+            input.addEventListener('blur', function() {
+                const error = document.getElementById(this.id + 'Error');
+                if (!this.value.trim()) {
+                    if (error) error.classList.remove('hidden');
+                    this.classList.add('border-error');
+                } else {
+                    if (error) error.classList.add('hidden');
+                    this.classList.remove('border-error');
+                }
+            });
+        });
+
+        // Email validation
+        document.getElementById('email').addEventListener('blur', function() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const error = document.getElementById('emailError');
+            
+            if (this.value && !emailRegex.test(this.value)) {
+                error.textContent = 'Please enter a valid email address';
+                error.classList.remove('hidden');
+                this.classList.add('border-error');
+            } else if (this.value) {
+                error.classList.add('hidden');
+                this.classList.remove('border-error');
+            }
+        });
+
+        // Password confirmation validation
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const error = document.getElementById('confirmPasswordError');
+            
+            if (this.value && this.value !== password) {
+                error.classList.remove('hidden');
+                this.classList.add('border-error');
+            } else {
+                error.classList.add('hidden');
+                this.classList.remove('border-error');
+            }
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
