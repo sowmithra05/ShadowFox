@@ -1,6 +1,7 @@
-Beginner Level Task:Portfolio:
+Beginner Level Task:
+Portfolio:
 https://portfoliosowmithra.netlify.app/
-
+Intermediate Level Task:
 # HTML
 
 A modern HTML project utilizing Tailwind CSS for building responsive web applications with minimal setup.
