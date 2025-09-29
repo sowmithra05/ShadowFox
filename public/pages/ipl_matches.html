@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Center - IPL Team Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }
+
+        nav {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #004d99;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #004d99;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding-bottom: 0.3rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #004d99;
+            border-bottom: 2px solid #004d99;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-login {
+            background: white;
+            color: #004d99;
+            border: 1px solid #004d99;
+        }
+
+        .btn-signup {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .live-match {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            border: 3px solid #ff4757;
+        }
+
+        .live-header {
+            background: #ff4757;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .live-pulse {
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .match-content {
+            padding: 2rem;
+        }
+
+        .match-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .venue {
+            color: #666;
+        }
+
+        .match-teams {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .team {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .team.right {
+            flex-direction: row-reverse;
+        }
+
+        .team-logo {
+            width: 80px;
+            height: 80px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .team-details {
+            flex: 1;
+        }
+
+        .team.right .team-details {
+            text-align: right;
+        }
+
+        .team-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .batting-label {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .team-score {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #004d99;
+        }
+
+        .vs-divider {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #999;
+        }
+
+        .partnership-box {
+            background: #fff9e6;
+            border: 1px solid #ffd700;
+            border-radius: 5px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .partnership-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .partnership-details {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .recent-overs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .over-ball {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .boundary {
+            background: #28a745;
+            color: white;
+        }
+
+        .six {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .wicket {
+            background: #dc3545;
+            color: white;
+        }
+
+        .dot {
+            background: #e9ecef;
+            color: #333;
+        }
+
+        .match-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .action-button {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .ball-by-ball {
+            background: #004d99;
+            color: white;
+        }
+
+        .full-scorecard {
+            background: white;
+            color: #004d99;
+            border: 2px solid #004d99;
+        }
+
+        .upcoming-match {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .match-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .live-badge {
+            background: #ff4757;
+            color: white;
+        }
+
+        .upcoming-badge {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .sidebar {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .widget {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .poll-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .poll-bar {
+            height: 8px;
+            background: #004d99;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+        }
+
+        .vote-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: #ffd700;
+            color: #004d99;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .live-update {
+            padding: 0.75rem;
+            border-left: 3px solid #004d99;
+            background: #f8f9fa;
+            margin-bottom: 0.75rem;
+            border-radius: 3px;
+        }
+
+        .update-time {
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        .update-text {
+            margin-top: 0.25rem;
+            color: #333;
+        }
+
+        .predictions {
+            margin-top: 1rem;
+        }
+
+        .prediction-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pred-label {
+            color: #666;
+        }
+
+        .pred-value {
+            font-weight: bold;
+            color: #004d99;
+        }
+
+        .join-discussion-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: #004d99;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">🏏</div>
+            <span>Team Hub</span>
+        </div>
+        <div class="nav-links">
+            <a href="ipl_dashboard.html">Dashboard</a>
+            <a href="ipl_players.html">Players</a>
+            <a href="ipl_matches.html" class="active">Matches</a>
+            <a href="ipl_community.html">Community</a>
+        </div>
+        <div class="nav-buttons">
+            <a href="ipl_login.html" class="btn btn-login">Login</a>
+            <a href="ipl_registration.html" class="btn btn-signup">Sign Up</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="content-grid">
+            <div class="main-content">
+                <!-- Live Match -->
+                <div class="live-match">
+                    <div class="live-header">
+                        <div class="live-pulse"></div>
+                        <strong>LIVE</strong>
+                        <span>Over 18.4</span>
+                    </div>
+                    <div class="match-content">
+                        <div class="match-header">
+                            <div class="venue">Wankhede Stadium, Mumbai</div>
+                        </div>
+
+                        <div class="match-teams">
+                            <div class="team">
+                                <div class="team-logo">🔵</div>
+                                <div class="team-details">
+                                    <div class="team-name">Mumbai Indians</div>
+                                    <div class="batting-label">Batting</div>
+                                    <div class="team-score">187/4</div>
+                                    <div style="font-size: 0.9rem; color: #666;">(18.4 overs)</div>
+                                </div>
+                            </div>
+
+                            <div class="vs-divider">vs</div>
+
+                            <div class="team right">
+                                <div class="team-logo">🟡</div>
+                                <div class="team-details">
+                                    <div class="team-name">Chennai Super Kings</div>
+                                    <div class="batting-label">Yet to bat</div>
+                                    <div class="team-score">Target: 186</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="partnership-box">
+                            <div class="partnership-title">Current Partnership</div>
+                            <div class="partnership-details">
+                                <div>
+                                    <strong>Rohit Sharma*</strong>
+                                    <div style="color: #666;">78 (52)</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <strong>Partnership: 89 runs (42 balls)</strong>
+                                </div>
+                                <div style="text-align: right;">
+                                    <strong>Hardik Pandya</strong>
+                                    <div style="color: #666;">45 (28)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <strong style="margin-bottom: 0.5rem; display: block;">Recent Overs</strong>
+                            <div class="recent-overs">
+                                <div class="over-ball boundary">6</div>
+                                <div class="over-ball dot">4</div>
+                                <div class="over-ball dot">8</div>
+                                <div class="over-ball six">12</div>
+                                <div class="over-ball dot">7</div>
+                                <div class="over-ball six">15</div>
+                            </div>
+                        </div>
+
+                        <div class="match-actions">
+                            <button class="action-button ball-by-ball" onclick="alert('Ball by Ball commentary coming soon!')">Ball by Ball</button>
+                            <button class="action-button full-scorecard" onclick="alert('Full Scorecard will open')">Full Scorecard</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Match -->
+                <div class="upcoming-match">
+                    <span class="match-status upcoming-badge">LIVE Over 12.3</span>
+                    <div class="match-teams">
+                        <div class="team">
+                            <div class="team-logo" style="width: 60px; height: 60px; font-size: 2rem;">🟣</div>
+                            <div class="team-details">
+                                <div class="team-name">Royal Challengers Bangalore</div>
+                                <div class="team-score" style="font-size: 1.5rem;">142/6</div>
+                                <div style="font-size: 0.85rem; color: #666;">(12.3 overs)</div>
+                            </div>
+                        </div>
+
+                        <div class="team right">
+                            <div class="team-logo" style="width: 60px; height: 60px; font-size: 2rem;">⚫</div>
+                            <div class="team-details">
+                                <div class="team-name">Kolkata Knight Riders</div>
+                                <div style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Yet to bat</div>
+                                <div style="font-size: 0.9rem; color: #666;">Target: 143</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                        <button class="action-button" style="background: #f8f9fa; color: #333;" onclick="alert('Match details')">View Details</button>
+                        <button class="action-button" style="background: #f8f9fa; color: #333;" onclick="alert('Commentary')">Commentary</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="widget">
+                    <h3 class="widget-title">Live Poll</h3>
+                    <p style="color: #666; margin-bottom: 1rem;">Who will win MI vs CSK?</p>
+                    
+                    <div class="poll-option">
+                        <label><input type="radio" name="poll" value="mi"> Mumbai Indians</label>
+                        <span style="font-weight: bold;">67%</span>
+                    </div>
+                    <div class="poll-bar" style="width: 67%;"></div>
+                    
+                    <div class="poll-option" style="margin-top: 0.5rem;">
+                        <label><input type="radio" name="poll" value="csk"> Chennai Super Kings</label>
+                        <span style="font-weight: bold;">33%</span>
+                    </div>
+                    <div class="poll-bar" style="width: 33%;"></div>
+                    
+                    <button class="vote-btn" onclick="alert('Vote recorded!')">Vote Now</button>
+                    <p style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 0.5rem;">2,647 votes • Ends in 2 days</p>
+                </div>
+
+                <div class="widget">
+                    <h3 class="widget-title">AI Predictions</h3>
+                    <div class="predictions">
+                        <div class="prediction-item">
+                            <span class="pred-label">Win Probability</span>
+                            <span class="pred-value">Live</span>
+                        </div>
+                        <div class="prediction-item">
+                            <span class="pred-label">MI</span>
+                            <span class="pred-value">72%</span>
+                        </div>
+                        <div class="prediction-item">
+                            <span class="pred-label">CSK</span>
+                            <span class="pred-value">28%</span>
+                        </div>
+                        <div class="prediction-item" style="border: none;">
+                            <span class="pred-label">Predicted Score</span>
+                            <span class="pred-value">195-205</span>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: #666; margin-top: 1rem;">Based on current run rate</p>
+                </div>
+
+                <div class="widget">
+                    <h3 class="widget-title">Live Updates</h3>
+                    <div class="live-update">
+                        <div class="update-time">2 minutes ago</div>
+                        <div class="update-text"><strong>FOUR!</strong> Rohit Sharma finds the gap</div>
+                    </div>
+                    <div class="live-update">
+                        <div class="update-time">5 minutes ago</div>
+                        <div class="update-text"><strong>50 Partnership</strong> up between Rohit & Hardik</div>
+                    </div>
+                    <div class="live-update">
+                        <div class="update-time">8 minutes ago</div>
+                        <div class="update-text">Rohit Sharma reaches his half-century</div>
+                    </div>
+                    <button class="join-discussion-btn" onclick="window.location.href='fan_community.html'">Join Discussion</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulate live score updates
+        let currentScore = 187;
+        let currentWickets = 4;
+        let currentOvers = 18.4;
+
+        function updateLiveScore() {
+            const random = Math.random();
+            if (random > 0.7) {
+                currentScore += Math.floor(Math.random() * 6) + 1;
+                currentOvers += 0.1;
+                if (currentOvers % 1 >= 0.6) {
+                    currentOvers = Math.floor(currentOvers) + 1;
+                }
+                document.querySelector('.team-score').textContent = `${currentScore}/${currentWickets}`;
+                document.querySelector('.team-score').parentElement.querySelector('div:last-child').textContent = `(${currentOvers.toFixed(1)} overs)`;
+            }
+        }
+
+        setInterval(updateLiveScore, 5000);
+    </script>
+</body>
+</html>

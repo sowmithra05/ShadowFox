@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Dashboard - IPL Team Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }
+
+        nav {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #004d99;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #004d99;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding-bottom: 0.3rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #004d99;
+            border-bottom: 2px solid #004d99;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-login {
+            background: white;
+            color: #004d99;
+            border: 1px solid #004d99;
+        }
+
+        .btn-signup {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #004d99 0%, #003d7a 100%);
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .team-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .team-logo {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .team-details h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-subtitle {
+            opacity: 0.9;
+        }
+
+        .team-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .next-match {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            min-width: 300px;
+        }
+
+        .next-match h3 {
+            margin-bottom: 1rem;
+        }
+
+        .match-opponent {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .match-date {
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .countdown-item {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .countdown-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .countdown-label {
+            font-size: 0.75rem;
+        }
+
+        .book-tickets-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: #ffd700;
+            color: #004d99;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .view-all {
+            color: #004d99;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .recent-matches {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .match-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .match-card:last-child {
+            border-bottom: none;
+        }
+
+        .match-teams {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .team-icon {
+            width: 50px;
+            height: 50px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .match-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .match-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .match-date-small {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .match-result {
+            text-align: right;
+        }
+
+        .result-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .won {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .lost {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .match-score {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        .performers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .performer-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .performer-image {
+            width: 80px;
+            height: 80px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .performer-info {
+            flex: 1;
+        }
+
+        .performer-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .performer-role {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .performer-stats {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-label-small {
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        .stat-value-small {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .sidebar {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .widget {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .poll-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .poll-option:hover {
+            background: #f8f9fa;
+            border-color: #004d99;
+        }
+
+        .poll-option input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+
+        .vote-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: #004d99;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .vote-info {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .community-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .comm-stat {
+            text-align: center;
+        }
+
+        .comm-stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #004d99;
+        }
+
+        .comm-stat-label {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .join-community-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">🏏</div>
+            <span>Team Hub</span>
+        </div>
+        <div class="nav-links">
+            <a href="ipl_dashboard.html" class="active">Dashboard</a>
+            <a href="ipl_players.html">Players</a>
+            <a href="ipl_matches.html">Matches</a>
+            <a href="ipl_community.html">Community</a>
+        </div>
+        <div class="nav-buttons">
+            <a href="ipl_login.html" class="btn btn-login">Login</a>
+            <a href="ipl_registration.html" class="btn btn-signup">Sign Up</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <div class="team-info">
+                <div class="team-logo">🏏</div>
+                <div class="team-details">
+                    <h1>Mumbai Indians</h1>
+                    <p class="team-subtitle">5-Time IPL Champions</p>
+                    <div class="team-stats">
+                        <div class="stat">
+                            <div class="stat-value">3rd</div>
+                            <div class="stat-label">Current Position</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">8</div>
+                            <div class="stat-label">Matches Won</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">6</div>
+                            <div class="stat-label">Matches Lost</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="next-match">
+                <h3>Next Match</h3>
+                <p class="match-opponent">vs Chennai Super Kings</p>
+                <p class="match-date">Sept 18, 2025 • 7:30 PM</p>
+                
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-value">-11</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value">-14</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value">-27</div>
+                        <div class="countdown-label">Min</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value">-53</div>
+                        <div class="countdown-label">Sec</div>
+                    </div>
+                </div>
+                
+                <button class="book-tickets-btn" onclick="alert('Ticket booking coming soon!')">Book Tickets</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-grid">
+            <div class="main-content">
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Recent Matches</h2>
+                        <a href="match_center.html" class="view-all">View All</a>
+                    </div>
+                    
+                    <div class="recent-matches">
+                        <div class="match-card">
+                            <div class="match-teams">
+                                <div class="team-icon">🔵</div>
+                                <div class="match-info">
+                                    <div class="match-title">MI vs RCB</div>
+                                    <div class="match-date-small">Sept 14, 2025</div>
+                                </div>
+                            </div>
+                            <div class="match-result">
+                                <span class="result-status won">Won by 6 wickets</span>
+                                <div class="match-score">185/4 (19.2 overs)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="match-card">
+                            <div class="match-teams">
+                                <div class="team-icon">⚫</div>
+                                <div class="match-info">
+                                    <div class="match-title">KKR vs MI</div>
+                                    <div class="match-date-small">Sept 11, 2025</div>
+                                </div>
+                            </div>
+                            <div class="match-result">
+                                <span class="result-status lost">Lost by 4 runs</span>
+                                <div class="match-score">176/8 (20 overs)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Top Performers</h2>
+                        <a href="player_profiles.html" class="view-all">View All Players</a>
+                    </div>
+                    
+                    <div class="performers-grid">
+                        <div class="performer-card">
+                            <div class="performer-image">👤</div>
+                            <div class="performer-info">
+                                <div class="performer-name">Rohit Sharma</div>
+                                <div class="performer-role">Captain • Batsman</div>
+                                <div class="performer-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label-small">Runs</span>
+                                        <span class="stat-value-small">542</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label-small">Avg.</span>
+                                        <span class="stat-value-small">38.7</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="performer-card">
+                            <div class="performer-image">👤</div>
+                            <div class="performer-info">
+                                <div class="performer-name">Jasprit Bumrah</div>
+                                <div class="performer-role">Bowler</div>
+                                <div class="performer-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label-small">Wickets</span>
+                                        <span class="stat-value-small">18</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label-small">Economy</span>
+                                        <span class="stat-value-small">7.2</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="widget">
+                    <h3 class="widget-title">Fan Poll</h3>
+                    <p style="color: #666; margin-bottom: 1rem;">Who should be the Man of the Match for the next game?</p>
+                    
+                    <div class="poll-option">
+                        <label><input type="radio" name="poll" value="rohit"> Rohit Sharma</label>
+                        <span>45%</span>
+                    </div>
+                    <div class="poll-option">
+                        <label><input type="radio" name="poll" value="jasprit"> Jasprit Bumrah</label>
+                        <span>32%</span>
+                    </div>
+                    <div class="poll-option">
+                        <label><input type="radio" name="poll" value="hardik"> Hardik Pandya</label>
+                        <span>23%</span>
+                    </div>
+                    
+                    <button class="vote-btn" onclick="alert('Vote recorded! Thank you for participating.')">Vote Now</button>
+                    <p class="vote-info">1,234 votes • Ends in 2 days</p>
+                </div>
+
+                <div class="widget">
+                    <h3 class="widget-title">Community Activity</h3>
+                    <div class="community-stats">
+                        <div class="comm-stat">
+                            <div class="comm-stat-value">2,847</div>
+                            <div class="comm-stat-label">Active Fans</div>
+                        </div>
+                        <div class="comm-stat">
+                            <div class="comm-stat-value">156</div>
+                            <div class="comm-stat-label">Today's Posts</div>
+                        </div>
+                        <div class="comm-stat">
+                            <div class="comm-stat-value">1,234</div>
+                            <div class="comm-stat-label">Poll Votes</div>
+                        </div>
+                    </div>
+                    <button class="join-community-btn" onclick="window.location.href='fan_community.html'">Join Community</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update countdown timer
+        function updateCountdown() {
+            const matchDate = new Date('2025-09-18T19:30:00');
+            const now = new Date();
+            const diff = matchDate - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.querySelectorAll('.countdown-value')[0].textContent = days;
+                document.querySelectorAll('.countdown-value')[1].textContent = hours;
+                document.querySelectorAll('.countdown-value')[2].textContent = minutes;
+                document.querySelectorAll('.countdown-value')[3].textContent = seconds;
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>

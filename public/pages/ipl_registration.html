@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration - IPL Team Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #004d99 0%, #001a33 100%);
+            min-height: 100vh;
+        }
+
+        nav {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #004d99;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #004d99;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #004d99;
+        }
+
+        .login-btn {
+            text-decoration: none;
+            color: #004d99;
+            padding: 0.5rem 1rem;
+            border: 1px solid #004d99;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #004d99;
+            color: white;
+        }
+
+        .signup-btn {
+            background: #ff6b35;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: linear-gradient(to bottom, rgba(0, 77, 153, 0.9), rgba(0, 26, 51, 0.95));
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+            background: #f8f9fa;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 60%;
+            right: -50%;
+            top: 15px;
+            height: 2px;
+            background: #ddd;
+        }
+
+        .step-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .step.active .step-number {
+            background: #004d99;
+            color: white;
+            border-color: #004d99;
+        }
+
+        .step.completed .step-number {
+            background: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .form-container {
+            padding: 2rem;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            background: #f8f9fa;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            color: #999;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        label .required {
+            color: red;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #004d99;
+        }
+
+        .phone-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .phone-input select {
+            width: 80px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-top: 0.2rem;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-weight: normal;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-primary {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+        }
+
+        .signin-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #666;
+        }
+
+        .signin-link a {
+            color: #004d99;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .team-card {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .team-card:hover {
+            border-color: #004d99;
+            background: #f8f9fa;
+        }
+
+        .team-card.selected {
+            border-color: #004d99;
+            background: #e7f3ff;
+        }
+
+        .player-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .player-card {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 0.8rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .player-card:hover {
+            border-color: #004d99;
+        }
+
+        .player-card.selected {
+            border-color: #004d99;
+            background: #e7f3ff;
+        }
+
+        .notification-box {
+            background: #fff9e6;
+            border: 1px solid #ffd700;
+            border-radius: 5px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .notification-box h3 {
+            color: #b8860b;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .profile-upload {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-preview {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            overflow: hidden;
+        }
+
+        .upload-btn {
+            background: #004d99;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .upload-info {
+            font-size: 0.85rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">🏏</div>
+            <span>Team Hub</span>
+        </div>
+        <div class="nav-links">
+            <a href="ipl_dashboard.html">Dashboard</a>
+            <a href="ipl_players.html">Players</a>
+            <a href="ipl_matches.html">Matches</a>
+            <a href="ipl_community.html">Community</a>
+            <a href="ipl_login.html" class="login-btn">Login</a>
+            <button class="signup-btn">Sign Up</button>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Join the IPL Team Hub</h1>
+        <p>Create your account to access exclusive content, connect with fellow fans,<br>and never miss a moment of IPL action</p>
+    </div>
+
+    <div class="container">
+        <div class="progress-steps">
+            <div class="step active" data-step="1">
+                <div class="step-number">1</div>
+                <div class="step-label">Personal Info</div>
+            </div>
+            <div class="step" data-step="2">
+                <div class="step-number">2</div>
+                <div class="step-label">Team Preferences</div>
+            </div>
+            <div class="step" data-step="3">
+                <div class="step-number">3</div>
+                <div class="step-label">Verification</div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <!-- Step 1: Personal Information -->
+            <div class="form-step active" id="step1">
+                <h2>Personal Information</h2>
+                <p class="subtitle">Let's start with the basics</p>
+
+                <div class="social-buttons">
+                    <button class="social-btn" onclick="alert('Google Sign-in coming soon!')">
+                        <span>🔍</span> Continue with Google
+                    </button>
+                    <button class="social-btn" onclick="alert('Facebook Sign-in coming soon!')">
+                        <span>📘</span> Continue with Facebook
+                    </button>
+                </div>
+
+                <div class="divider">Or register with email</div>
+
+                <form id="personalInfoForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" placeholder="Enter your email address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <div class="phone-input">
+                            <select>
+                                <option>+91</option>
+                                <option>+1</option>
+                                <option>+44</option>
+                            </select>
+                            <input type="tel" placeholder="Enter your phone number">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Password <span class="required">*</span></label>
+                            <input type="password" id="password" placeholder="Create a strong password" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password <span class="required">*</span></label>
+                            <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input type="date" id="dob">
+                    </div>
+
+                    <div class="buttons">
+                        <button type="button" class="btn btn-primary" onclick="nextStep(1)">Next Step</button>
+                    </div>
+                </form>
+
+                <div class="signin-link">
+                    Already have an account? <a href="login.html">Sign in here</a>
+                </div>
+            </div>
+
+            <!-- Step 2: Team Preferences -->
+            <div class="form-step" id="step2">
+                <h2>Team Preferences</h2>
+                <p class="subtitle">Choose your favorite team and players</p>
+
+                <form id="teamPreferencesForm">
+                    <div class="form-group">
+                        <label>Favorite IPL Team <span class="required">*</span></label>
+                        <div class="team-grid">
+                            <div class="team-card" onclick="selectTeam(this, 'MI')">
+                                <div style="font-size: 2rem;">🔵</div>
+                                <strong>Mumbai Indians</strong>
+                            </div>
+                            <div class="team-card" onclick="selectTeam(this, 'CSK')">
+                                <div style="font-size: 2rem;">💛</div>
+                                <strong>Chennai Super Kings</strong>
+                            </div>
+                            <div class="team-card" onclick="selectTeam(this, 'RCB')">
+                                <div style="font-size: 2rem;">🔴</div>
+                                <strong>Royal Challengers Bangalore</strong>
+                            </div>
+                            <div class="team-card" onclick="selectTeam(this, 'KKR')">
+                                <div style="font-size: 2rem;">🟣</div>
+                                <strong>Kolkata Knight Riders</strong>
+                            </div>
+                        </div>
+                        <input type="hidden" id="selectedTeam" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Favorite Players (Select up to 3)</label>
+                        <div class="player-grid">
+                            <div class="player-card" onclick="selectPlayer(this, 'Rohit')">
+                                <div style="font-size: 1.5rem;">👤</div>
+                                <strong>Rohit Sharma</strong>
+                                <small>Mumbai Indians</small>
+                            </div>
+                            <div class="player-card" onclick="selectPlayer(this, 'Virat')">
+                                <div style="font-size: 1.5rem;">👤</div>
+                                <strong>Virat Kohli</strong>
+                                <small>Royal Challengers Bangalore</small>
+                            </div>
+                            <div class="player-card" onclick="selectPlayer(this, 'Dhoni')">
+                                <div style="font-size: 1.5rem;">👤</div>
+                                <strong>MS Dhoni</strong>
+                                <small>Chennai Super Kings</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Notification Preferences</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="matchUpdates" checked>
+                            <label for="matchUpdates">Match updates and live scores</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="teamNews" checked>
+                            <label for="teamNews">Team news and announcements</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="playerPerf">
+                            <label for="playerPerf">Player performance updates</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="community">
+                            <label for="community">Community discussions and polls</label>
+                        </div>
+                    </div>
+
+                    <div class="notification-box">
+                        <h3>🎁 Join Fan Club Membership</h3>
+                        <p style="font-size: 0.9rem; color: #666;">Get exclusive access to premium content, early ticket booking, and special events</p>
+                        <div class="checkbox-group" style="margin-top: 0.5rem;">
+                            <input type="checkbox" id="fanClub">
+                            <label for="fanClub">Yes, I want to join the fan club (₹999/year)</label>
+                        </div>
+                    </div>
+
+                    <div class="buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Previous</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next Step</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 3: Verification -->
+            <div class="form-step" id="step3">
+                <h2>Almost Done!</h2>
+                <p class="subtitle">Review your information and complete registration</p>
+
+                <div class="form-group">
+                    <label>Profile Photo (Optional)</label>
+                    <div class="profile-upload">
+                        <div class="profile-preview">
+                            <span style="font-size: 2rem;">📷</span>
+                        </div>
+                        <div>
+                            <button type="button" class="upload-btn" onclick="alert('File upload coming soon!')">Upload Photo</button>
+                            <div class="upload-info">JPG, PNG or GIF (max. 5MB)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notification-box">
+                    <h3>📧 Stay Updated</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">Subscribe to our newsletter for the latest IPL news, match schedules, and exclusive content</p>
+                    <div class="checkbox-group" style="margin-top: 0.5rem;">
+                        <input type="checkbox" id="newsletter" checked>
+                        <label for="newsletter">Yes, send me the newsletter</label>
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="termsAccept" required>
+                    <label for="termsAccept">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="ageConfirm" required>
+                    <label for="ageConfirm">I confirm that I am at least 13 years old</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="marketing">
+                    <label for="marketing">I agree to receive marketing communications and promotional offers</label>
+                </div>
+
+                <div class="buttons">
+                    <button type="button" class="btn btn-secondary" onclick="prevStep(3)">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="submitRegistration()">Create Account</button>
+                </div>
+
+                <div class="signin-link">
+                    Already have an account? <a href="login.html">Sign in here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let selectedTeam = '';
+        let selectedPlayers = [];
+
+        function nextStep(step) {
+            if (step === 1) {
+                // Validate step 1
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                if (!firstName || !lastName || !email || !password || !confirmPassword) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match');
+                    return;
+                }
+            }
+
+            if (step === 2) {
+                if (!selectedTeam) {
+                    alert('Please select your favorite team');
+                    return;
+                }
+            }
+
+            currentStep++;
+            updateStepDisplay();
+        }
+
+        function prevStep(step) {
+            currentStep--;
+            updateStepDisplay();
+        }
+
+        function updateStepDisplay() {
+            // Hide all steps
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+            });
+
+            // Show current step
+            document.getElementById(`step${currentStep}`).classList.add('active');
+
+            // Update progress indicators
+            document.querySelectorAll('.step').forEach((step, index) => {
+                const stepNum = index + 1;
+                if (stepNum < currentStep) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                } else if (stepNum === currentStep) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                } else {
+                    step.classList.remove('active', 'completed');
+                }
+            });
+        }
+
+        function selectTeam(element, team) {
+            document.querySelectorAll('.team-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            selectedTeam = team;
+            document.getElementById('selectedTeam').value = team;
+        }
+
+        function selectPlayer(element, player) {
+            if (element.classList.contains('selected')) {
+                element.classList.remove('selected');
+                selectedPlayers = selectedPlayers.filter(p => p !== player);
+            } else {
+                if (selectedPlayers.length < 3) {
+                    element.classList.add('selected');
+                    selectedPlayers.push(player);
+                } else {
+                    alert('You can select up to 3 players only');
+                }
+            }
+        }
+
+        async function submitRegistration() {
+            const termsAccept = document.getElementById('termsAccept').checked;
+            const ageConfirm = document.getElementById('ageConfirm').checked;
+
+            if (!termsAccept || !ageConfirm) {
+                alert('Please accept the terms and confirm your age');
+                return;
+            }
+
+            const userData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+
+            try {
+                const response = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert('Registration successful! Please login to continue.');
+                    window.location.href = 'login.html';
+                } else {
+                    alert(data.error || 'Registration failed');
+                }
+            } catch (error) {
+                alert('Network error. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>
